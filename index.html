@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Ammar & Juveriya — Wedding Invitation</title>
+    <meta name="description" content="You are cordially invited to celebrate the blessed union of Ahmed & Fatima. Join us for this joyous occasion." />
+    <meta name="author" content="DigiYes" />
+    <meta property="og:title" content="Ammar & Juveriya — Wedding Invitation" />
+    <meta property="og:description" content="You are cordially invited to celebrate the blessed union of Ammar & Juveriya." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 1: CURTAIN LANDING                  -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="curtain-section" class="curtain-section">
+        <!-- Decorative floating elements behind curtains -->
+        <div class="floating-petals" id="floating-petals"></div>
+
+        <!-- Golden Curtain Rod -->
+        <div class="curtain-rod">
+            <div class="curtain-rod-finial"></div>
+            <div class="curtain-rod-bar"></div>
+            <div class="curtain-rod-finial"></div>
+        </div>
+
+        <!-- Left Curtain -->
+        <div class="curtain curtain-left" id="curtain-left">
+            <div class="curtain-fabric"></div>
+            <div class="curtain-folds"></div>
+            <div class="curtain-floral"></div>
+        </div>
+
+        <!-- Right Curtain -->
+        <div class="curtain curtain-right" id="curtain-right">
+            <div class="curtain-fabric"></div>
+            <div class="curtain-folds"></div>
+            <div class="curtain-floral"></div>
+        </div>
+
+        <!-- Tap Prompt -->
+        <div class="tap-prompt" id="tap-prompt">
+            <div class="tap-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-5-4 5-5-5-5m5 5H3"/>
+                </svg>
+            </div>
+            <p>Tap to Open</p>
+        </div>
+
+        <!-- Revealed Content Behind Curtains -->
+        <div class="curtain-content" id="curtain-content">
+            <div class="ornament-top">✦</div>
+            <div class="bismillah" id="bismillah">
+                <p class="arabic-text">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+                <p class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+            </div>
+            <div class="invitation-title" id="invitation-title">
+                <h1>Wedding Invitation</h1>
+                <div class="title-ornament">
+                    <span class="ornament-line"></span>
+                    <span class="ornament-diamond">◆</span>
+                    <span class="ornament-line"></span>
+                </div>
+            </div>
+            <div class="couple-names" id="couple-names">
+                <span class="groom-name">Ammar</span>
+                <span class="ampersand">&</span>
+                <span class="bride-name">juveriya</span>
+            </div>
+            <div class="ornament-bottom">✦</div>
+            <div class="scroll-hint" id="scroll-hint">
+                <p>Scroll Down</p>
+                <div class="scroll-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14m-7-7 7 7 7-7"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 2: SCRATCH CARDS + NOTIFY           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="scratch-section" class="scratch-section">
+        <div class="section-header">
+            <div class="islamic-border-top"></div>
+            <h2 class="section-title">Reveal</h2>
+            <p class="section-subtitle">Scratch to discover the date</p>
+        </div>
+
+        <div class="scratch-cards-container">
+            <!-- Plate 1: Day -->
+            <div class="scratch-card" data-index="0">
+                <div class="scratch-card-inner">
+                    <div class="scratch-revealed">
+                        <p class="reveal-label">Day</p>
+                        <p class="reveal-date-big">30</p>
+                    </div>
+                    <canvas class="scratch-canvas" width="160" height="160"></canvas>
+                    <div class="scratch-label">
+                        <div class="scratch-icon">✧</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plate 2: Month -->
+            <div class="scratch-card" data-index="1">
+                <div class="scratch-card-inner">
+                    <div class="scratch-revealed">
+                        <p class="reveal-label">Month</p>
+                        <p class="reveal-date-big">April</p>
+                    </div>
+                    <canvas class="scratch-canvas" width="160" height="160"></canvas>
+                    <div class="scratch-label">
+                        <div class="scratch-icon">✧</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plate 3: Year -->
+            <div class="scratch-card" data-index="2">
+                <div class="scratch-card-inner">
+                    <div class="scratch-revealed">
+                        <p class="reveal-label">Year</p>
+                        <p class="reveal-date-big">2026</p>
+                    </div>
+                    <canvas class="scratch-canvas" width="160" height="160"></canvas>
+                    <div class="scratch-label">
+                        <div class="scratch-icon">✧</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notify Button -->
+        <div class="notify-container" id="notify-container">
+            <p class="notify-text">Don't miss the celebrations!</p>
+            <button class="notify-btn" id="notify-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+                <span>Notify Me</span>
+            </button>
+            <p class="notify-sub" id="notify-status">Get reminded 1 week, 1 day & 1 hour before</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 3: COUNTDOWN TIMER                  -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="countdown-section" class="countdown-section">
+        <div class="countdown-bg-pattern"></div>
+        <div class="section-header">
+            <h2 class="section-title">Counting the Moments</h2>
+            <p class="section-subtitle">Until we become one</p>
+        </div>
+
+        <div class="countdown-container" id="countdown-container">
+            <div class="countdown-unit">
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdown-days">000</span>
+                </div>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdown-hours">00</span>
+                </div>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdown-minutes">00</span>
+                </div>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdown-seconds">00</span>
+                </div>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 4: INVITATION IMAGE                 -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="invitation-image-section" class="invitation-image-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Invitation</h2>
+            <p class="section-subtitle">The formal invitation card</p>
+        </div>
+        <div class="invitation-frame" id="invitation-frame">
+            <div class="frame-corner frame-tl"></div>
+            <div class="frame-corner frame-tr"></div>
+            <div class="frame-corner frame-bl"></div>
+            <div class="frame-corner frame-br"></div>
+            <div class="invitation-placeholder" id="invitation-placeholder">
+                <div class="placeholder-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+                <p>Invitation Card Image</p>
+                <p class="placeholder-sub">Will be placed here</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 5: WHEN & WHERE (VENUES)            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="venue-section" class="venue-section">
+        <div class="section-header">
+            <h2 class="section-title">When & Where</h2>
+            <p class="section-subtitle">Join us at these blessed venues</p>
+        </div>
+
+        <div class="venues-container">
+            <!-- Nikah Venue -->
+            <div class="venue-card" id="venue-nikah">
+                <div class="venue-icon">
+                    <svg width="48" height="48" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M32 4 C32 4 20 16 20 24 C20 32 24 36 32 36 C40 36 44 32 44 24 C44 16 32 4 32 4Z" fill="rgba(201,168,76,0.15)"/>
+                        <path d="M8 56 L8 32 L32 16 L56 32 L56 56"/>
+                        <path d="M24 56 L24 42 L40 42 L40 56"/>
+                        <line x1="32" y1="8" x2="32" y2="4"/>
+                        <circle cx="32" cy="3" r="2"/>
+                    </svg>
+                </div>
+                <h3 class="venue-title">Nikah Ceremony</h3>
+                <div class="venue-divider"></div>
+                <p class="venue-detail"><strong>Thursday, April 30, 2026</strong></p>
+                <p class="venue-detail">11:00 AM</p>
+                <p class="venue-name">Masjid-e-Baitul Mukarram</p>
+                <p class="venue-address">Flower Garden, Naganadi, Ambur</p>
+                <a href="https://maps.app.goo.gl/ezUPqSid9omJg75v6" 
+                   target="_blank" rel="noopener" class="venue-navigate-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Navigate to Venue
+                </a>
+            </div>
+
+            <!-- Valima Venue -->
+            <div class="venue-card" id="venue-valima">
+                <div class="venue-icon">
+                    <svg width="48" height="48" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="8" y="24" width="48" height="32" rx="2"/>
+                        <path d="M4 24 L32 8 L60 24"/>
+                        <path d="M24 56 L24 40 L40 40 L40 56"/>
+                        <rect x="16" y="30" width="6" height="6"/>
+                        <rect x="42" y="30" width="6" height="6"/>
+                        <line x1="20" y1="4" x2="20" y2="8"/>
+                        <line x1="44" y1="4" x2="44" y2="8"/>
+                    </svg>
+                </div>
+                <h3 class="venue-title">Valima Reception</h3>
+                <div class="venue-divider"></div>
+                <p class="venue-detail"><strong>Thursday, April 30, 2026</strong></p>
+                <p class="venue-detail">1:00 PM onwards</p>
+                <p class="venue-name">Jalalia Function Hall</p>
+                <p class="venue-address">QPPF+G87, Gandhi Nagar, Ambur Plantation R F, Ambur</p>
+                <a href="https://maps.app.goo.gl/uxyKz6PAtZMgFDTE9" 
+                   target="_blank" rel="noopener" class="venue-navigate-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Navigate to Venue
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 6: CELEBRATE WITH US                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="celebrate-section" class="celebrate-section">
+        <div class="celebrate-bg-pattern"></div>
+        <div class="celebrate-content">
+            <div class="celebrate-ornament">✦ ✦ ✦</div>
+            <h2 class="celebrate-title">Celebrate With Us</h2>
+            <p class="celebrate-dua">
+                "And among His Signs is that He created for you mates from among yourselves,
+                that you may dwell in tranquility with them, and He has put love and mercy between
+                your hearts."
+            </p>
+            <p class="celebrate-ref">— Surah Ar-Rum (30:21)</p>
+            <div class="celebrate-message">
+                <p>Your presence and blessings would mean the world to us. We humbly request the honour of your company as we begin this beautiful journey together, Insha'Allah.</p>
+            </div>
+            <div class="celebrate-ornament">✦ ✦ ✦</div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 7: FOOTER                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer id="footer" class="site-footer">
+        <div class="footer-ornament"></div>
+        <a href="#" class="footer-brand" target="_blank" rel="noopener">
+            make yours <span class="brand-highlight">@digiyes</span>
+        </a>
+    </footer>
+
+    <!-- Audio Toggle Button -->
+    <button class="audio-toggle" id="audio-toggle" aria-label="Toggle Music">
+        <svg class="audio-icon-on" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <svg class="audio-icon-off" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+    </button>
+
+    <!-- Background Audio -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="audio/bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
